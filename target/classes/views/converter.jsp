@@ -17,10 +17,10 @@
 	<script type="text/javascript">
 		function req(){
 			$.ajax({
-				url:"converter",
-				data:"1-mmx",
+				url:"login",
+				data:"{\"username\":\"1234\",\"password\":\"1234\"}",
 				type:"POST",
-				contentType:"application/x-wisely",
+				contentType:"application/json",
 				success:function(date){
 					$("#resp").html(date);
 				}
