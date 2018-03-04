@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -24,7 +25,8 @@ import HttpMessageConverter.MyMessageConverter;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("controller,test")
+@ComponentScan("controller,test,Service")
+@EnableScheduling    //开启计划任务的支持
 public class MyMvcConfig extends WebMvcConfigurerAdapter{
 	// 配置视图管理工具
 	@Bean
@@ -59,6 +61,9 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/indexs").setViewName("/index");
 		registry.addViewController("/uploads").setViewName("/upload");
+		registry.addViewController("/see").setViewName("/see");
+		registry.addViewController("/async").setViewName("/async");
+		
 	}
 	
 	//此处配置可以将忽略.的默认操作去掉
